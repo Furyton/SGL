@@ -16,9 +16,9 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 if __name__ == "__main__":
     is_windows = sys.platform.startswith('win')
     if is_windows:
-        root_folder = 'D:/OneDrive - mail.ustc.edu.cn/PythonProjects/SGL/'
+        root_folder = None
     else:
-        root_folder = '/home/wujc/PythonProjects/SGL/'
+        root_folder = '/data/wushiguang-slurm/code/pretrain-survey/SGL/'
     conf = Configurator(root_folder + "NeuRec.properties", default_section="hyperparameters")
     seed = conf["seed"]
     print('seed=', seed)
@@ -26,7 +26,7 @@ if __name__ == "__main__":
     random.seed(seed)
     tf.set_random_seed(seed)
     gpu_id = str(conf["gpu_id"])
-    os.environ["CUDA_VISIBLE_DEVICES"] = gpu_id
+    # os.environ["CUDA_VISIBLE_DEVICES"] = gpu_id
 
     recommender = conf["recommender"]
 
